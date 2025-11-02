@@ -8,6 +8,7 @@ class SpringAnimatedText extends StatefulWidget {
   final Duration delay;
   final double scaleAmount;
   final TextAlign textAlign;
+  final bool repeat;
 
   const SpringAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class SpringAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.scaleAmount = 0.3,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -32,13 +34,18 @@ class _SpringAnimatedTextState extends State<SpringAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

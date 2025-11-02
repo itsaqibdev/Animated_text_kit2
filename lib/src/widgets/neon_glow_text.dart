@@ -9,6 +9,7 @@ class NeonGlowAnimatedText extends StatefulWidget {
   final Color glowColor;
   final double blurRadius;
   final TextAlign textAlign;
+  final bool repeat;
 
   const NeonGlowAnimatedText({
     Key? key,
@@ -19,6 +20,7 @@ class NeonGlowAnimatedText extends StatefulWidget {
     this.glowColor = Colors.cyan,
     this.blurRadius = 10.0,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   }) : super(key: key);
 
   @override
@@ -34,13 +36,18 @@ class _NeonGlowAnimatedTextState extends State<NeonGlowAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _glowAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-    
+    _glowAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.repeat(reverse: true);
+        if (widget.repeat) {
+          _controller.repeat(reverse: true);
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

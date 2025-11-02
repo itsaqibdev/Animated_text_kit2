@@ -10,6 +10,7 @@ class WaveAnimatedText extends StatefulWidget {
   final double amplitude;
   final double frequency;
   final TextAlign textAlign;
+  final bool repeat;
 
   const WaveAnimatedText({
     super.key,
@@ -20,6 +21,7 @@ class WaveAnimatedText extends StatefulWidget {
     this.amplitude = 10.0,
     this.frequency = 1.0,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -35,13 +37,18 @@ class _WaveAnimatedTextState extends State<WaveAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _waveAnimation = Tween<double>(begin: 0.0, end: 2 * pi).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.linear),
-    );
+    _waveAnimation = Tween<double>(
+      begin: 0.0,
+      end: 2 * pi,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.linear));
 
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.repeat();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }
@@ -59,18 +66,19 @@ class _WaveAnimatedTextState extends State<WaveAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
-                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
-                         MainAxisAlignment.start,
+          mainAxisAlignment: widget.textAlign == TextAlign.center
+              ? MainAxisAlignment.center
+              : widget.textAlign == TextAlign.end ||
+                    widget.textAlign == TextAlign.right
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
           children: List.generate(widget.text.length, (index) {
-            double offset = sin(_waveAnimation.value + index * widget.frequency) *
+            double offset =
+                sin(_waveAnimation.value + index * widget.frequency) *
                 widget.amplitude;
             return Transform.translate(
               offset: Offset(0, offset),
-              child: Text(
-                widget.text[index],
-                style: widget.textStyle,
-              ),
+              child: Text(widget.text[index], style: widget.textStyle),
             );
           }),
         );

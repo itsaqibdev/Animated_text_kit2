@@ -8,6 +8,7 @@ class ElasticAnimatedText extends StatefulWidget {
   final Duration delay;
   final double scaleAmount;
   final TextAlign textAlign;
+  final bool repeat;
 
   const ElasticAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class ElasticAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.scaleAmount = 0.2,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -32,13 +34,18 @@ class _ElasticAnimatedTextState extends State<ElasticAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.elasticOut),
-    );
+    _scaleAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.elasticOut));
 
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

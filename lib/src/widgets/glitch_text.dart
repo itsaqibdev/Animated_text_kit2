@@ -9,6 +9,7 @@ class GlitchAnimatedText extends StatefulWidget {
   final Duration delay;
   final int glitchCount;
   final TextAlign textAlign;
+  final bool repeat;
 
   const GlitchAnimatedText({
     Key? key,
@@ -18,6 +19,7 @@ class GlitchAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.glitchCount = 5,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   }) : super(key: key);
 
   @override
@@ -37,10 +39,14 @@ class _GlitchAnimatedTextState extends State<GlitchAnimatedText>
     _controller = AnimationController(duration: widget.duration, vsync: this);
     _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
     _displayText = widget.text;
-    
+
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
         _applyGlitchEffect();
       }
     });
@@ -48,7 +54,7 @@ class _GlitchAnimatedTextState extends State<GlitchAnimatedText>
 
   void _applyGlitchEffect() {
     if (!mounted) return;
-    
+
     setState(() {
       // Generate random glitch characters
       List<String> chars = _displayText.split('');
@@ -58,7 +64,7 @@ class _GlitchAnimatedTextState extends State<GlitchAnimatedText>
       }
       _displayText = chars.join();
     });
-    
+
     // Reset to original text after a short delay
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) {
@@ -70,7 +76,8 @@ class _GlitchAnimatedTextState extends State<GlitchAnimatedText>
   }
 
   String _getRandomChar() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()';
+    const chars =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&*()';
     return chars[_random.nextInt(chars.length)];
   }
 
@@ -88,7 +95,11 @@ class _GlitchAnimatedTextState extends State<GlitchAnimatedText>
         return Text(
           _displayText,
           style: widget.textStyle?.copyWith(
-            color: Color.lerp(Colors.white, widget.textStyle?.color, _animation.value),
+            color: Color.lerp(
+              Colors.white,
+              widget.textStyle?.color,
+              _animation.value,
+            ),
           ),
           textAlign: widget.textAlign,
         );

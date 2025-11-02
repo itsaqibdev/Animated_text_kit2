@@ -10,6 +10,7 @@ class TypewriterAnimatedText extends StatefulWidget {
   final Duration cursorBlinkInterval;
   final double speedFactor;
   final TextAlign textAlign;
+  final bool repeat;
 
   const TypewriterAnimatedText({
     super.key,
@@ -21,6 +22,7 @@ class TypewriterAnimatedText extends StatefulWidget {
     this.cursorBlinkInterval = const Duration(milliseconds: 500),
     this.speedFactor = 1.0,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -37,10 +39,17 @@ class _TypewriterAnimatedTextState extends State<TypewriterAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _textIndex = StepTween(begin: 0, end: widget.text.length).animate(_controller);
-    
-    _controller.forward();
-    
+    _textIndex = StepTween(
+      begin: 0,
+      end: widget.text.length,
+    ).animate(_controller);
+
+    if (widget.repeat) {
+      _controller.repeat();
+    } else {
+      _controller.forward();
+    }
+
     // Cursor blinking effect
     if (widget.showCursor) {
       Future.delayed(widget.cursorBlinkInterval, _toggleCursor);
@@ -52,7 +61,9 @@ class _TypewriterAnimatedTextState extends State<TypewriterAnimatedText>
     setState(() {
       _showCursor = !_showCursor;
     });
-    Future.delayed(widget.cursorBlinkInterval, _toggleCursor);
+    if (widget.repeat) {
+      Future.delayed(widget.cursorBlinkInterval, _toggleCursor);
+    }
   }
 
   @override
@@ -68,9 +79,12 @@ class _TypewriterAnimatedTextState extends State<TypewriterAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
-                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
-                         MainAxisAlignment.start,
+          mainAxisAlignment: widget.textAlign == TextAlign.center
+              ? MainAxisAlignment.center
+              : widget.textAlign == TextAlign.end ||
+                    widget.textAlign == TextAlign.right
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
           children: [
             Text(
               widget.text.substring(0, _textIndex.value),

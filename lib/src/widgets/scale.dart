@@ -9,6 +9,7 @@ class ScaleAnimatedText extends StatefulWidget {
   final double startScale;
   final double endScale;
   final TextAlign textAlign;
+  final bool repeat;
 
   const ScaleAnimatedText({
     super.key,
@@ -19,6 +20,7 @@ class ScaleAnimatedText extends StatefulWidget {
     this.startScale = 0.0,
     this.endScale = 1.0,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -34,13 +36,18 @@ class _ScaleAnimatedTextState extends State<ScaleAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _scale = Tween<double>(begin: widget.startScale, end: widget.endScale).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-    
+    _scale = Tween<double>(
+      begin: widget.startScale,
+      end: widget.endScale,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

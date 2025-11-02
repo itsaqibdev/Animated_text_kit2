@@ -8,6 +8,7 @@ class WordByWordAnimatedText extends StatefulWidget {
   final Duration delay;
   final Duration wordDelay;
   final TextAlign textAlign;
+  final bool repeat;
 
   const WordByWordAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class WordByWordAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.wordDelay = const Duration(milliseconds: 300),
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -24,7 +26,7 @@ class WordByWordAnimatedText extends StatefulWidget {
 }
 
 class _WordByWordAnimatedTextState extends State<WordByWordAnimatedText>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late List<AnimationController> _wordControllers;
   late List<Animation<double>> _wordAnimations;
@@ -40,21 +42,31 @@ class _WordByWordAnimatedTextState extends State<WordByWordAnimatedText>
 
     // Create controllers for each word
     for (int i = 0; i < _words.length; i++) {
-      AnimationController wordController =
-          AnimationController(duration: widget.duration, vsync: this);
+      AnimationController wordController = AnimationController(
+        duration: widget.duration,
+        vsync: this,
+      );
       _wordControllers.add(wordController);
-      _wordAnimations.add(Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: wordController, curve: Curves.easeInOut),
-      ));
+      _wordAnimations.add(
+        Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(parent: wordController, curve: Curves.easeInOut),
+        ),
+      );
 
       // Start animation with delay for each word
       Future.delayed(
-          widget.delay + Duration(milliseconds: i * widget.wordDelay.inMilliseconds),
-          () {
-        if (mounted) {
-          wordController.forward();
-        }
-      });
+        widget.delay +
+            Duration(milliseconds: i * widget.wordDelay.inMilliseconds),
+        () {
+          if (mounted) {
+            if (widget.repeat) {
+              wordController.repeat();
+            } else {
+              wordController.forward();
+            }
+          }
+        },
+      );
     }
   }
 
@@ -71,9 +83,12 @@ class _WordByWordAnimatedTextState extends State<WordByWordAnimatedText>
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
-                     widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
-                     MainAxisAlignment.start,
+      mainAxisAlignment: widget.textAlign == TextAlign.center
+          ? MainAxisAlignment.center
+          : widget.textAlign == TextAlign.end ||
+                widget.textAlign == TextAlign.right
+          ? MainAxisAlignment.end
+          : MainAxisAlignment.start,
       children: List.generate(_words.length, (index) {
         return AnimatedBuilder(
           animation: _wordAnimations[index],

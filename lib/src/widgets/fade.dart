@@ -7,6 +7,7 @@ class FadeAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final TextAlign textAlign;
+  final bool repeat;
 
   const FadeAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class FadeAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -30,13 +32,18 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-    
+    _opacity = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

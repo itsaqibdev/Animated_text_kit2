@@ -7,6 +7,7 @@ class RainbowColorAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final TextAlign textAlign;
+  final bool repeat;
 
   const RainbowColorAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class RainbowColorAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -31,13 +33,18 @@ class _RainbowColorAnimatedTextState extends State<RainbowColorAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _colorAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.linear),
-    );
+    _colorAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.linear));
 
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.repeat();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }
@@ -60,9 +67,12 @@ class _RainbowColorAnimatedTextState extends State<RainbowColorAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
-                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
-                         MainAxisAlignment.start,
+          mainAxisAlignment: widget.textAlign == TextAlign.center
+              ? MainAxisAlignment.center
+              : widget.textAlign == TextAlign.end ||
+                    widget.textAlign == TextAlign.right
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
           children: List.generate(widget.text.length, (index) {
             return Text(
               widget.text[index],

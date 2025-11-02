@@ -8,6 +8,7 @@ class BounceAnimatedText extends StatefulWidget {
   final Duration delay;
   final double bounceHeight;
   final TextAlign textAlign;
+  final bool repeat;
 
   const BounceAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class BounceAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.bounceHeight = 20.0,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -32,13 +34,18 @@ class _BounceAnimatedTextState extends State<BounceAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _bounceAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.bounceOut),
-    );
+    _bounceAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.bounceOut));
 
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

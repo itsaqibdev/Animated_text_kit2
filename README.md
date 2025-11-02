@@ -1,4 +1,7 @@
 # Animated Text Kit 2
+
+![Animated Text Kit 2 Demo](animted_text_kit2.gif)
+
 [![Pub](https://img.shields.io/pub/v/animated_text_kit2.svg)](https://pub.dev/packages/animated_text_kit2)
 [![GitHub](https://img.shields.io/github/license/itsaqibdev/animated_text_kit2)](https://github.com/itsaqibdev/animated_text_kit2)
 
@@ -41,7 +44,7 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  animated_text_kit2: ^0.0.2
+  animated_text_kit2: ^0.0.3
 ```
 
 ### ⬇️ Installation

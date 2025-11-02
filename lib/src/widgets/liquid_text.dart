@@ -7,6 +7,7 @@ class LiquidAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final TextAlign textAlign;
+  final bool repeat;
 
   const LiquidAnimatedText({
     Key? key,
@@ -15,6 +16,7 @@ class LiquidAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   }) : super(key: key);
 
   @override
@@ -31,10 +33,14 @@ class _LiquidAnimatedTextState extends State<LiquidAnimatedText>
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
     _animation = CurvedAnimation(parent: _controller, curve: Curves.elasticOut);
-    
+
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

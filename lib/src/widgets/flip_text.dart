@@ -8,6 +8,7 @@ class FlipAnimatedText extends StatefulWidget {
   final Duration delay;
   final Axis flipAxis;
   final TextAlign textAlign;
+  final bool repeat;
 
   const FlipAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class FlipAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.flipAxis = Axis.horizontal,
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -32,13 +34,18 @@ class _FlipAnimatedTextState extends State<FlipAnimatedText>
   void initState() {
     super.initState();
     _controller = AnimationController(duration: widget.duration, vsync: this);
-    _flipAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _flipAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     Future.delayed(widget.delay, () {
       if (mounted) {
-        _controller.forward();
+        if (widget.repeat) {
+          _controller.repeat();
+        } else {
+          _controller.forward();
+        }
       }
     });
   }

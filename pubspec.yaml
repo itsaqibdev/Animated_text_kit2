@@ -1,6 +1,6 @@
 name: animated_text_kit2
 description: "A powerful Flutter package with 18+ beautiful animated text widgets including Typewriter, Fade, Scale, Rotate, Zoom, Liquid Text, Glitch Text, Neon Glow Text, Split Characters Animate, Word-by-Word Animation, Paragraph Reveal, Wave Text, Rainbow Color Animation, Bounce, Elastic, Spring Effects, 3D Flip Text, and Matrix-style fall-down animation."
-version: 0.0.2
+version: 0.0.4
 homepage: https://github.com/itsaqibdev/animated_text_kit2
 repository: https://github.com/itsaqibdev/animated_text_kit2
 issue_tracker: https://github.com/itsaqibdev/animated_text_kit2/issues

@@ -8,6 +8,7 @@ class SplitCharactersAnimatedText extends StatefulWidget {
   final Duration delay;
   final Duration characterDelay;
   final TextAlign textAlign;
+  final bool repeat;
 
   const SplitCharactersAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class SplitCharactersAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.characterDelay = const Duration(milliseconds: 100),
     this.textAlign = TextAlign.start,
+    this.repeat = false,
   });
 
   @override
@@ -26,7 +28,7 @@ class SplitCharactersAnimatedText extends StatefulWidget {
 
 class _SplitCharactersAnimatedTextState
     extends State<SplitCharactersAnimatedText>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late List<AnimationController> _charControllers;
   late List<Animation<double>> _charAnimations;
@@ -40,21 +42,31 @@ class _SplitCharactersAnimatedTextState
 
     // Create controllers for each character
     for (int i = 0; i < widget.text.length; i++) {
-      AnimationController charController =
-          AnimationController(duration: widget.duration, vsync: this);
+      AnimationController charController = AnimationController(
+        duration: widget.duration,
+        vsync: this,
+      );
       _charControllers.add(charController);
-      _charAnimations.add(Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: charController, curve: Curves.easeInOut),
-      ));
+      _charAnimations.add(
+        Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(parent: charController, curve: Curves.easeInOut),
+        ),
+      );
 
       // Start animation with delay for each character
       Future.delayed(
-          widget.delay + Duration(milliseconds: i * widget.characterDelay.inMilliseconds),
-          () {
-        if (mounted) {
-          charController.forward();
-        }
-      });
+        widget.delay +
+            Duration(milliseconds: i * widget.characterDelay.inMilliseconds),
+        () {
+          if (mounted) {
+            if (widget.repeat) {
+              charController.repeat();
+            } else {
+              charController.forward();
+            }
+          }
+        },
+      );
     }
   }
 
@@ -71,19 +83,19 @@ class _SplitCharactersAnimatedTextState
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
-                     widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
-                     MainAxisAlignment.start,
+      mainAxisAlignment: widget.textAlign == TextAlign.center
+          ? MainAxisAlignment.center
+          : widget.textAlign == TextAlign.end ||
+                widget.textAlign == TextAlign.right
+          ? MainAxisAlignment.end
+          : MainAxisAlignment.start,
       children: List.generate(widget.text.length, (index) {
         return AnimatedBuilder(
           animation: _charAnimations[index],
           builder: (context, child) {
             return Opacity(
               opacity: _charAnimations[index].value,
-              child: Text(
-                widget.text[index],
-                style: widget.textStyle,
-              ),
+              child: Text(widget.text[index], style: widget.textStyle),
             );
           },
         );
