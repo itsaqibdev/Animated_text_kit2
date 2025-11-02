@@ -15,5 +15,7 @@
 * 3D Flip Text
 * Matrix-style fall-down animation
 * Added AnimatedTextKit2 singleton class for easier usage (AnimatedTextKit2.ANIMATION_NAME)
+* Added text alignment support to all animations
+* Enhanced animation effects for better visual quality
 * Complete example app demonstrating both usage patterns
 * Comprehensive documentation
