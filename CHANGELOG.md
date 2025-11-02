@@ -14,5 +14,6 @@
 * Bounce, Elastic, Spring Effects
 * 3D Flip Text
 * Matrix-style fall-down animation
-* Complete example app demonstrating all animations
+* Added AnimatedTextKit2 singleton class for easier usage (AnimatedTextKit2.ANIMATION_NAME)
+* Complete example app demonstrating both usage patterns
 * Comprehensive documentation
