@@ -1,0 +1,364 @@
+import 'package:flutter/material.dart';
+import 'widgets/typewriter.dart';
+import 'widgets/fade.dart';
+import 'widgets/scale.dart';
+import 'widgets/rotate.dart';
+import 'widgets/zoom.dart';
+import 'widgets/liquid_text.dart';
+import 'widgets/glitch_text.dart';
+import 'widgets/neon_glow_text.dart';
+import 'widgets/split_characters_animate.dart';
+import 'widgets/word_by_word_animation.dart';
+import 'widgets/paragraph_reveal.dart';
+import 'widgets/wave_text.dart';
+import 'widgets/rainbow_color_animation.dart';
+import 'widgets/bounce_effect.dart';
+import 'widgets/elastic_effect.dart';
+import 'widgets/spring_effect.dart';
+import 'widgets/flip_text.dart';
+import 'widgets/matrix_fall_down.dart';
+
+/// Main entry point for AnimatedTextKit2
+///
+/// Usage:
+/// ```dart
+/// AnimatedTextKit2.Typewriter(
+///   text: 'Hello World',
+///   duration: Duration(milliseconds: 500),
+/// )
+/// ```
+class AnimatedTextKit2 {
+  AnimatedTextKit2._();
+
+  /// Typewriter animation with cursor effects and variable typing speed
+  static TypewriterAnimatedText Typewriter({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 500),
+    TextStyle? textStyle,
+    bool showCursor = true,
+    Widget? cursor,
+    Duration cursorBlinkInterval = const Duration(milliseconds: 500),
+    double speedFactor = 1.0,
+  }) =>
+      TypewriterAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        showCursor: showCursor,
+        cursor: cursor,
+        cursorBlinkInterval: cursorBlinkInterval,
+        speedFactor: speedFactor,
+      );
+
+  /// Fade animation
+  static FadeAnimatedText Fade({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+  }) =>
+      FadeAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+      );
+
+  /// Scale animation
+  static ScaleAnimatedText Scale({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double startScale = 0.0,
+    double endScale = 1.0,
+  }) =>
+      ScaleAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        startScale: startScale,
+        endScale: endScale,
+      );
+
+  /// Rotate animation
+  static RotateAnimatedText Rotate({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double startAngle = 0.0,
+    double endAngle = 2 * 3.14159,
+  }) =>
+      RotateAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        startAngle: startAngle,
+        endAngle: endAngle,
+      );
+
+  /// Zoom animation (combination of scale and fade)
+  static ZoomAnimatedText Zoom({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double startScale = 0.0,
+    double endScale = 1.0,
+  }) =>
+      ZoomAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        startScale: startScale,
+        endScale: endScale,
+      );
+
+  /// Liquid text animation
+  static LiquidAnimatedText Liquid({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1500),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+  }) =>
+      LiquidAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+      );
+
+  /// Glitch text animation
+  static GlitchAnimatedText Glitch({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 2000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    int glitchCount = 5,
+  }) =>
+      GlitchAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        glitchCount: glitchCount,
+      );
+
+  /// Neon glow text animation
+  static NeonGlowAnimatedText NeonGlow({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1500),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    Color glowColor = Colors.cyan,
+    double blurRadius = 10.0,
+  }) =>
+      NeonGlowAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        glowColor: glowColor,
+        blurRadius: blurRadius,
+      );
+
+  /// Split characters animation
+  static SplitCharactersAnimatedText SplitCharacters({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    Duration characterDelay = const Duration(milliseconds: 100),
+  }) =>
+      SplitCharactersAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        characterDelay: characterDelay,
+      );
+
+  /// Word-by-word animation
+  static WordByWordAnimatedText WordByWord({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    Duration wordDelay = const Duration(milliseconds: 300),
+  }) =>
+      WordByWordAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        wordDelay: wordDelay,
+      );
+
+  /// Paragraph reveal animation
+  static ParagraphRevealAnimatedText ParagraphReveal({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 2000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    TextAlign textAlign = TextAlign.start,
+  }) =>
+      ParagraphRevealAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        textAlign: textAlign,
+      );
+
+  /// Wave text animation
+  static WaveAnimatedText Wave({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 2000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double amplitude = 10.0,
+    double frequency = 1.0,
+  }) =>
+      WaveAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        amplitude: amplitude,
+        frequency: frequency,
+      );
+
+  /// Rainbow color animation
+  static RainbowColorAnimatedText Rainbow({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 2000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+  }) =>
+      RainbowColorAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+      );
+
+  /// Bounce effect animation
+  static BounceAnimatedText Bounce({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double bounceHeight = 20.0,
+  }) =>
+      BounceAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        bounceHeight: bounceHeight,
+      );
+
+  /// Elastic effect animation
+  static ElasticAnimatedText Elastic({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1500),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double scaleAmount = 0.2,
+  }) =>
+      ElasticAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        scaleAmount: scaleAmount,
+      );
+
+  /// Spring effect animation
+  static SpringAnimatedText Spring({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1500),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double scaleAmount = 0.3,
+  }) =>
+      SpringAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        scaleAmount: scaleAmount,
+      );
+
+  /// 3D Flip text animation
+  static FlipAnimatedText Flip({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 1500),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    Axis flipAxis = Axis.horizontal,
+  }) =>
+      FlipAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        flipAxis: flipAxis,
+      );
+
+  /// Matrix-style fall-down animation
+  static MatrixFallDownAnimatedText MatrixFall({
+    Key? key,
+    required String text,
+    Duration duration = const Duration(milliseconds: 2000),
+    TextStyle? textStyle,
+    Duration delay = Duration.zero,
+    double fallDistance = 100.0,
+  }) =>
+      MatrixFallDownAnimatedText(
+        key: key,
+        text: text,
+        duration: duration,
+        textStyle: textStyle,
+        delay: delay,
+        fallDistance: fallDistance,
+      );
+}

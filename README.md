@@ -64,7 +64,7 @@ import 'package:animated_text_kit2/animated_text_kit2.dart';
 
 ## 🎯 Usage Examples
 
-### 1. Typewriter Animation
+### Method 1: Direct Widget Usage
 ```dart
 TypewriterAnimatedText(
   text: 'Hello, World!',
@@ -77,9 +77,24 @@ TypewriterAnimatedText(
 )
 ```
 
-### 2. Fade Animation
+### Method 2: AnimatedTextKit2 Singleton (Recommended)
 ```dart
-FadeAnimatedText(
+AnimatedTextKit2.Typewriter(
+  text: 'Hello, World!',
+  textStyle: TextStyle(
+    fontSize: 32.0,
+    fontWeight: FontWeight.bold,
+  ),
+  duration: Duration(milliseconds: 500),
+  showCursor: true,
+)
+```
+
+### More Examples with AnimatedTextKit2
+
+#### Fade Animation
+```dart
+AnimatedTextKit2.Fade(
   text: 'Fade In Text',
   duration: Duration(seconds: 2),
   textStyle: TextStyle(
@@ -89,9 +104,9 @@ FadeAnimatedText(
 )
 ```
 
-### 3. Scale Animation
+#### Scale Animation
 ```dart
-ScaleAnimatedText(
+AnimatedTextKit2.Scale(
   text: 'Scaling Text',
   duration: Duration(seconds: 2),
   textStyle: TextStyle(
@@ -103,9 +118,9 @@ ScaleAnimatedText(
 )
 ```
 
-### 4. Rainbow Color Animation
+#### Rainbow Color Animation
 ```dart
-RainbowColorAnimatedText(
+AnimatedTextKit2.Rainbow(
   text: 'Rainbow Text',
   duration: Duration(seconds: 3),
   textStyle: TextStyle(
@@ -115,7 +130,7 @@ RainbowColorAnimatedText(
 )
 ```
 
-> 💡 **Pro Tip**: All animations support custom `duration`, `textStyle`, and `delay` parameters for fine-tuning.
+> 💡 **Pro Tip**: All animations support custom `duration`, `textStyle`, and `delay` parameters for fine-tuning. The `AnimatedTextKit2` approach provides a more organized and consistent API.
 
 ## 🧪 Example App
 

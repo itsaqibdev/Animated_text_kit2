@@ -35,7 +35,7 @@ class MyHomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Typewriter Animation:',
+              'Typewriter Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const TypewriterAnimatedText(
@@ -45,7 +45,17 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Fade Animation:',
+              'Typewriter Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Typewriter(
+              text: 'Hello, World!',
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Fade Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const FadeAnimatedText(
@@ -56,7 +66,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Scale Animation:',
+              'Fade Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Fade(
+              text: 'Fade In Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Scale Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const ScaleAnimatedText(
@@ -67,7 +88,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Rotate Animation:',
+              'Scale Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Scale(
+              text: 'Scaling Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Rotate Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const RotateAnimatedText(
@@ -78,7 +110,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Zoom Animation:',
+              'Rotate Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Rotate(
+              text: 'Rotating Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Zoom Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const ZoomAnimatedText(
@@ -89,7 +132,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Liquid Animation:',
+              'Zoom Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Zoom(
+              text: 'Zoom Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Liquid Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const LiquidAnimatedText(
@@ -100,7 +154,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Glitch Animation:',
+              'Liquid Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Liquid(
+              text: 'Liquid Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Glitch Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const GlitchAnimatedText(
@@ -111,7 +176,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Neon Glow Animation:',
+              'Glitch Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Glitch(
+              text: 'Glitch Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Neon Glow Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const NeonGlowAnimatedText(
@@ -122,7 +198,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Split Characters Animation:',
+              'Neon Glow Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.NeonGlow(
+              text: 'Neon Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Split Characters Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SplitCharactersAnimatedText(
@@ -133,7 +220,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Word-by-Word Animation:',
+              'Split Characters Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.SplitCharacters(
+              text: 'Split Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Word-by-Word Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const WordByWordAnimatedText(
@@ -144,7 +242,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Paragraph Reveal Animation:',
+              'Word-by-Word Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.WordByWord(
+              text: 'Word by Word Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Paragraph Reveal Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const ParagraphRevealAnimatedText(
@@ -155,7 +264,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Wave Animation:',
+              'Paragraph Reveal Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.ParagraphReveal(
+              text: 'This is a paragraph reveal animation example.',
+              duration: const Duration(seconds: 3),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Wave Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const WaveAnimatedText(
@@ -166,7 +286,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Rainbow Color Animation:',
+              'Wave Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Wave(
+              text: 'Wave Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Rainbow Color Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const RainbowColorAnimatedText(
@@ -177,7 +308,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Bounce Animation:',
+              'Rainbow Color Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Rainbow(
+              text: 'Rainbow Text',
+              duration: const Duration(seconds: 3),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Bounce Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const BounceAnimatedText(
@@ -188,7 +330,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Elastic Animation:',
+              'Bounce Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Bounce(
+              text: 'Bounce Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Elastic Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const ElasticAnimatedText(
@@ -199,7 +352,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Spring Animation:',
+              'Elastic Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Elastic(
+              text: 'Elastic Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Spring Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SpringAnimatedText(
@@ -210,7 +374,18 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Flip Animation:',
+              'Spring Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Spring(
+              text: 'Spring Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Flip Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const FlipAnimatedText(
@@ -221,13 +396,35 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 20),
             
             const Text(
-              'Matrix Fall Down Animation:',
+              'Flip Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.Flip(
+              text: 'Flip Text',
+              duration: const Duration(seconds: 2),
+              textStyle: const TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Matrix Fall Down Animation (Direct):',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const MatrixFallDownAnimatedText(
               text: 'Matrix Text',
               duration: Duration(seconds: 3),
               textStyle: TextStyle(fontSize: 24),
+            ),
+            const SizedBox(height: 20),
+            
+            const Text(
+              'Matrix Fall Down Animation (via AnimatedTextKit2):',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            AnimatedTextKit2.MatrixFall(
+              text: 'Matrix Text',
+              duration: const Duration(seconds: 3),
+              textStyle: const TextStyle(fontSize: 24),
             ),
           ],
         ),

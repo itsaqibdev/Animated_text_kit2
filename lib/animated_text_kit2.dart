@@ -16,3 +16,4 @@ export 'src/widgets/elastic_effect.dart';
 export 'src/widgets/spring_effect.dart';
 export 'src/widgets/flip_text.dart';
 export 'src/widgets/matrix_fall_down.dart';
+export 'src/animated_text_kit2.dart';
