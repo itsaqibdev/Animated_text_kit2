@@ -1,4 +1,4 @@
-## 0.0.1
+## 0.0.2
 
 * Initial release with 18 different animated text widgets
 * Typewriter 2.0 with cursor effects and variable typing speed
