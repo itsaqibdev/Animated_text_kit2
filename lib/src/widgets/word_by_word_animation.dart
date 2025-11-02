@@ -7,6 +7,7 @@ class WordByWordAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final Duration wordDelay;
+  final TextAlign textAlign;
 
   const WordByWordAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class WordByWordAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.wordDelay = const Duration(milliseconds: 300),
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -69,6 +71,9 @@ class _WordByWordAnimatedTextState extends State<WordByWordAnimatedText>
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
+                     widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
+                     MainAxisAlignment.start,
       children: List.generate(_words.length, (index) {
         return AnimatedBuilder(
           animation: _wordAnimations[index],

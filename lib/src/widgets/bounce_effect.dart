@@ -7,6 +7,7 @@ class BounceAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final double bounceHeight;
+  final TextAlign textAlign;
 
   const BounceAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class BounceAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.bounceHeight = 20.0,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -58,6 +60,7 @@ class _BounceAnimatedTextState extends State<BounceAnimatedText>
           child: Text(
             widget.text,
             style: widget.textStyle,
+            textAlign: widget.textAlign,
           ),
         );
       },

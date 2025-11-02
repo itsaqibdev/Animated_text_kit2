@@ -8,6 +8,7 @@ class NeonGlowAnimatedText extends StatefulWidget {
   final Duration delay;
   final Color glowColor;
   final double blurRadius;
+  final TextAlign textAlign;
 
   const NeonGlowAnimatedText({
     Key? key,
@@ -17,6 +18,7 @@ class NeonGlowAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.glowColor = Colors.cyan,
     this.blurRadius = 10.0,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override
@@ -64,6 +66,7 @@ class _NeonGlowAnimatedTextState extends State<NeonGlowAnimatedText>
               ..color = widget.glowColor
               ..maskFilter = MaskFilter.blur(BlurStyle.normal, currentBlur),
           ),
+          textAlign: widget.textAlign,
         );
       },
     );

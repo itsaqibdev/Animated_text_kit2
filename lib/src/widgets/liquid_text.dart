@@ -6,6 +6,7 @@ class LiquidAnimatedText extends StatefulWidget {
   final Duration duration;
   final TextStyle? textStyle;
   final Duration delay;
+  final TextAlign textAlign;
 
   const LiquidAnimatedText({
     Key? key,
@@ -13,6 +14,7 @@ class LiquidAnimatedText extends StatefulWidget {
     this.duration = const Duration(milliseconds: 1500),
     this.textStyle,
     this.delay = Duration.zero,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override
@@ -57,6 +59,7 @@ class _LiquidAnimatedTextState extends State<LiquidAnimatedText>
             style: widget.textStyle?.copyWith(
               height: 1.0 + (1 - _animation.value) * 0.5,
             ),
+            textAlign: widget.textAlign,
           ),
         );
       },

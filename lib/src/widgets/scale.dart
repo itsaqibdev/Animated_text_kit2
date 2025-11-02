@@ -8,6 +8,7 @@ class ScaleAnimatedText extends StatefulWidget {
   final Duration delay;
   final double startScale;
   final double endScale;
+  final TextAlign textAlign;
 
   const ScaleAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class ScaleAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.startScale = 0.0,
     this.endScale = 1.0,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -56,6 +58,7 @@ class _ScaleAnimatedTextState extends State<ScaleAnimatedText>
       child: Text(
         widget.text,
         style: widget.textStyle,
+        textAlign: widget.textAlign,
       ),
     );
   }

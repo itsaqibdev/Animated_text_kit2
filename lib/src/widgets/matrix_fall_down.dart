@@ -8,6 +8,7 @@ class MatrixFallDownAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final double fallDistance;
+  final TextAlign textAlign;
 
   const MatrixFallDownAnimatedText({
     Key? key,
@@ -16,6 +17,7 @@ class MatrixFallDownAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.fallDistance = 100.0,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override
@@ -56,6 +58,9 @@ class _MatrixFallDownAnimatedTextState extends State<MatrixFallDownAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
+                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
+                         MainAxisAlignment.start,
           children: List.generate(widget.text.length, (index) {
             // Stagger the animation for each character
             double staggerValue = min(1.0, _fallAnimation.value * widget.text.length - index);

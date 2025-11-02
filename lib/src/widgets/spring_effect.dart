@@ -7,6 +7,7 @@ class SpringAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final double scaleAmount;
+  final TextAlign textAlign;
 
   const SpringAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class SpringAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.scaleAmount = 0.3,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -58,6 +60,7 @@ class _SpringAnimatedTextState extends State<SpringAnimatedText>
           child: Text(
             widget.text,
             style: widget.textStyle,
+            textAlign: widget.textAlign,
           ),
         );
       },

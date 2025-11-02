@@ -9,6 +9,7 @@ class TypewriterAnimatedText extends StatefulWidget {
   final Widget? cursor;
   final Duration cursorBlinkInterval;
   final double speedFactor;
+  final TextAlign textAlign;
 
   const TypewriterAnimatedText({
     super.key,
@@ -19,6 +20,7 @@ class TypewriterAnimatedText extends StatefulWidget {
     this.cursor,
     this.cursorBlinkInterval = const Duration(milliseconds: 500),
     this.speedFactor = 1.0,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -66,10 +68,14 @@ class _TypewriterAnimatedTextState extends State<TypewriterAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
+                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
+                         MainAxisAlignment.start,
           children: [
             Text(
               widget.text.substring(0, _textIndex.value),
               style: widget.textStyle,
+              textAlign: widget.textAlign,
             ),
             if (widget.showCursor && _showCursor)
               widget.cursor ?? const Text('|'),

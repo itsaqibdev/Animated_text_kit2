@@ -8,6 +8,7 @@ class RotateAnimatedText extends StatefulWidget {
   final Duration delay;
   final double startAngle;
   final double endAngle;
+  final TextAlign textAlign;
 
   const RotateAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class RotateAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.startAngle = 0.0,
     this.endAngle = 2 * 3.14159, // Full rotation
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -56,6 +58,7 @@ class _RotateAnimatedTextState extends State<RotateAnimatedText>
       child: Text(
         widget.text,
         style: widget.textStyle,
+        textAlign: widget.textAlign,
       ),
     );
   }

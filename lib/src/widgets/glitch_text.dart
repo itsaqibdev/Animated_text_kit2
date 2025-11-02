@@ -8,6 +8,7 @@ class GlitchAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final int glitchCount;
+  final TextAlign textAlign;
 
   const GlitchAnimatedText({
     Key? key,
@@ -16,6 +17,7 @@ class GlitchAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.glitchCount = 5,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override
@@ -88,6 +90,7 @@ class _GlitchAnimatedTextState extends State<GlitchAnimatedText>
           style: widget.textStyle?.copyWith(
             color: Color.lerp(Colors.white, widget.textStyle?.color, _animation.value),
           ),
+          textAlign: widget.textAlign,
         );
       },
     );

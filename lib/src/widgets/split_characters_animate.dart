@@ -7,6 +7,7 @@ class SplitCharactersAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final Duration characterDelay;
+  final TextAlign textAlign;
 
   const SplitCharactersAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class SplitCharactersAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.characterDelay = const Duration(milliseconds: 100),
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -69,6 +71,9 @@ class _SplitCharactersAnimatedTextState
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
+                     widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
+                     MainAxisAlignment.start,
       children: List.generate(widget.text.length, (index) {
         return AnimatedBuilder(
           animation: _charAnimations[index],

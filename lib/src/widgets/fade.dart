@@ -6,6 +6,7 @@ class FadeAnimatedText extends StatefulWidget {
   final Duration duration;
   final TextStyle? textStyle;
   final Duration delay;
+  final TextAlign textAlign;
 
   const FadeAnimatedText({
     super.key,
@@ -13,6 +14,7 @@ class FadeAnimatedText extends StatefulWidget {
     this.duration = const Duration(milliseconds: 1000),
     this.textStyle,
     this.delay = Duration.zero,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -52,6 +54,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
       child: Text(
         widget.text,
         style: widget.textStyle,
+        textAlign: widget.textAlign,
       ),
     );
   }

@@ -6,6 +6,7 @@ class RainbowColorAnimatedText extends StatefulWidget {
   final Duration duration;
   final TextStyle? textStyle;
   final Duration delay;
+  final TextAlign textAlign;
 
   const RainbowColorAnimatedText({
     super.key,
@@ -13,6 +14,7 @@ class RainbowColorAnimatedText extends StatefulWidget {
     this.duration = const Duration(milliseconds: 2000),
     this.textStyle,
     this.delay = Duration.zero,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -58,6 +60,9 @@ class _RainbowColorAnimatedTextState extends State<RainbowColorAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
+                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
+                         MainAxisAlignment.start,
           children: List.generate(widget.text.length, (index) {
             return Text(
               widget.text[index],

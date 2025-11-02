@@ -7,6 +7,7 @@ class FlipAnimatedText extends StatefulWidget {
   final TextStyle? textStyle;
   final Duration delay;
   final Axis flipAxis;
+  final TextAlign textAlign;
 
   const FlipAnimatedText({
     super.key,
@@ -15,6 +16,7 @@ class FlipAnimatedText extends StatefulWidget {
     this.textStyle,
     this.delay = Duration.zero,
     this.flipAxis = Axis.horizontal,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -62,6 +64,7 @@ class _FlipAnimatedTextState extends State<FlipAnimatedText>
           child: Text(
             widget.text,
             style: widget.textStyle,
+            textAlign: widget.textAlign,
           ),
         );
       },

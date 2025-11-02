@@ -9,6 +9,7 @@ class WaveAnimatedText extends StatefulWidget {
   final Duration delay;
   final double amplitude;
   final double frequency;
+  final TextAlign textAlign;
 
   const WaveAnimatedText({
     super.key,
@@ -18,6 +19,7 @@ class WaveAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.amplitude = 10.0,
     this.frequency = 1.0,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -57,6 +59,9 @@ class _WaveAnimatedTextState extends State<WaveAnimatedText>
       builder: (context, child) {
         return Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: widget.textAlign == TextAlign.center ? MainAxisAlignment.center : 
+                         widget.textAlign == TextAlign.end || widget.textAlign == TextAlign.right ? MainAxisAlignment.end : 
+                         MainAxisAlignment.start,
           children: List.generate(widget.text.length, (index) {
             double offset = sin(_waveAnimation.value + index * widget.frequency) *
                 widget.amplitude;

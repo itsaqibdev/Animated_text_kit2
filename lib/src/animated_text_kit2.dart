@@ -40,6 +40,7 @@ class AnimatedTextKit2 {
     Widget? cursor,
     Duration cursorBlinkInterval = const Duration(milliseconds: 500),
     double speedFactor = 1.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       TypewriterAnimatedText(
         key: key,
@@ -50,6 +51,7 @@ class AnimatedTextKit2 {
         cursor: cursor,
         cursorBlinkInterval: cursorBlinkInterval,
         speedFactor: speedFactor,
+        textAlign: textAlign,
       );
 
   /// Fade animation
@@ -59,6 +61,7 @@ class AnimatedTextKit2 {
     Duration duration = const Duration(milliseconds: 1000),
     TextStyle? textStyle,
     Duration delay = Duration.zero,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       FadeAnimatedText(
         key: key,
@@ -66,6 +69,7 @@ class AnimatedTextKit2 {
         duration: duration,
         textStyle: textStyle,
         delay: delay,
+        textAlign: textAlign,
       );
 
   /// Scale animation
@@ -77,6 +81,7 @@ class AnimatedTextKit2 {
     Duration delay = Duration.zero,
     double startScale = 0.0,
     double endScale = 1.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       ScaleAnimatedText(
         key: key,
@@ -86,6 +91,7 @@ class AnimatedTextKit2 {
         delay: delay,
         startScale: startScale,
         endScale: endScale,
+        textAlign: textAlign,
       );
 
   /// Rotate animation
@@ -97,6 +103,7 @@ class AnimatedTextKit2 {
     Duration delay = Duration.zero,
     double startAngle = 0.0,
     double endAngle = 2 * 3.14159,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       RotateAnimatedText(
         key: key,
@@ -106,6 +113,7 @@ class AnimatedTextKit2 {
         delay: delay,
         startAngle: startAngle,
         endAngle: endAngle,
+        textAlign: textAlign,
       );
 
   /// Zoom animation (combination of scale and fade)
@@ -117,6 +125,7 @@ class AnimatedTextKit2 {
     Duration delay = Duration.zero,
     double startScale = 0.0,
     double endScale = 1.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       ZoomAnimatedText(
         key: key,
@@ -126,6 +135,7 @@ class AnimatedTextKit2 {
         delay: delay,
         startScale: startScale,
         endScale: endScale,
+        textAlign: textAlign,
       );
 
   /// Liquid text animation
@@ -135,6 +145,7 @@ class AnimatedTextKit2 {
     Duration duration = const Duration(milliseconds: 1500),
     TextStyle? textStyle,
     Duration delay = Duration.zero,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       LiquidAnimatedText(
         key: key,
@@ -142,6 +153,7 @@ class AnimatedTextKit2 {
         duration: duration,
         textStyle: textStyle,
         delay: delay,
+        textAlign: textAlign,
       );
 
   /// Glitch text animation
@@ -152,6 +164,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     int glitchCount = 5,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       GlitchAnimatedText(
         key: key,
@@ -160,6 +173,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         glitchCount: glitchCount,
+        textAlign: textAlign,
       );
 
   /// Neon glow text animation
@@ -171,6 +185,7 @@ class AnimatedTextKit2 {
     Duration delay = Duration.zero,
     Color glowColor = Colors.cyan,
     double blurRadius = 10.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       NeonGlowAnimatedText(
         key: key,
@@ -180,6 +195,7 @@ class AnimatedTextKit2 {
         delay: delay,
         glowColor: glowColor,
         blurRadius: blurRadius,
+        textAlign: textAlign,
       );
 
   /// Split characters animation
@@ -190,6 +206,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     Duration characterDelay = const Duration(milliseconds: 100),
+    TextAlign textAlign = TextAlign.start,
   }) =>
       SplitCharactersAnimatedText(
         key: key,
@@ -198,6 +215,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         characterDelay: characterDelay,
+        textAlign: textAlign,
       );
 
   /// Word-by-word animation
@@ -208,6 +226,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     Duration wordDelay = const Duration(milliseconds: 300),
+    TextAlign textAlign = TextAlign.start,
   }) =>
       WordByWordAnimatedText(
         key: key,
@@ -216,6 +235,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         wordDelay: wordDelay,
+        textAlign: textAlign,
       );
 
   /// Paragraph reveal animation
@@ -245,6 +265,7 @@ class AnimatedTextKit2 {
     Duration delay = Duration.zero,
     double amplitude = 10.0,
     double frequency = 1.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       WaveAnimatedText(
         key: key,
@@ -254,6 +275,7 @@ class AnimatedTextKit2 {
         delay: delay,
         amplitude: amplitude,
         frequency: frequency,
+        textAlign: textAlign,
       );
 
   /// Rainbow color animation
@@ -263,6 +285,7 @@ class AnimatedTextKit2 {
     Duration duration = const Duration(milliseconds: 2000),
     TextStyle? textStyle,
     Duration delay = Duration.zero,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       RainbowColorAnimatedText(
         key: key,
@@ -270,6 +293,7 @@ class AnimatedTextKit2 {
         duration: duration,
         textStyle: textStyle,
         delay: delay,
+        textAlign: textAlign,
       );
 
   /// Bounce effect animation
@@ -280,6 +304,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     double bounceHeight = 20.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       BounceAnimatedText(
         key: key,
@@ -288,6 +313,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         bounceHeight: bounceHeight,
+        textAlign: textAlign,
       );
 
   /// Elastic effect animation
@@ -298,6 +324,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     double scaleAmount = 0.2,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       ElasticAnimatedText(
         key: key,
@@ -306,6 +333,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         scaleAmount: scaleAmount,
+        textAlign: textAlign,
       );
 
   /// Spring effect animation
@@ -316,6 +344,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     double scaleAmount = 0.3,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       SpringAnimatedText(
         key: key,
@@ -324,6 +353,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         scaleAmount: scaleAmount,
+        textAlign: textAlign,
       );
 
   /// 3D Flip text animation
@@ -334,6 +364,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     Axis flipAxis = Axis.horizontal,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       FlipAnimatedText(
         key: key,
@@ -342,6 +373,7 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         flipAxis: flipAxis,
+        textAlign: textAlign,
       );
 
   /// Matrix-style fall-down animation
@@ -352,6 +384,7 @@ class AnimatedTextKit2 {
     TextStyle? textStyle,
     Duration delay = Duration.zero,
     double fallDistance = 100.0,
+    TextAlign textAlign = TextAlign.start,
   }) =>
       MatrixFallDownAnimatedText(
         key: key,
@@ -360,5 +393,6 @@ class AnimatedTextKit2 {
         textStyle: textStyle,
         delay: delay,
         fallDistance: fallDistance,
+        textAlign: textAlign,
       );
 }

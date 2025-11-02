@@ -8,6 +8,7 @@ class ZoomAnimatedText extends StatefulWidget {
   final Duration delay;
   final double startScale;
   final double endScale;
+  final TextAlign textAlign;
 
   const ZoomAnimatedText({
     super.key,
@@ -17,6 +18,7 @@ class ZoomAnimatedText extends StatefulWidget {
     this.delay = Duration.zero,
     this.startScale = 0.0,
     this.endScale = 1.0,
+    this.textAlign = TextAlign.start,
   });
 
   @override
@@ -62,6 +64,7 @@ class _ZoomAnimatedTextState extends State<ZoomAnimatedText>
         child: Text(
           widget.text,
           style: widget.textStyle,
+          textAlign: widget.textAlign,
         ),
       ),
     );
